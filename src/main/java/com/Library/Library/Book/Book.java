@@ -26,7 +26,7 @@ public class Book {
     private String publisher;
     private int pages;
     @Transient
-    private String status;
+    private String status = "Available";
 
     @OneToMany(mappedBy = "book")
     private List<BorrowingRecord> borrowingRecords;

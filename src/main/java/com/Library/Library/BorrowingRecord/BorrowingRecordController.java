@@ -1,6 +1,8 @@
 package com.Library.Library.BorrowingRecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,21 +23,17 @@ public class BorrowingRecordController {
         return borrowingRecordService.getBorrowingRecords();
     }
 
-//    @PostMapping("/borrow/{bookId}/patron/{patronId}")
-//    public BorrowingRecord borrowBook(@PathVariable Long bookId, @PathVariable Long patronId) {
-//        return borrowingRecordService.borrowBook(bookId, patronId);
-//    }
+
 @PostMapping("/borrow/{bookId}/patron/{patronId}")
-public void borrowBook(@PathVariable Long bookId, @PathVariable Long patronId) {
+public ResponseEntity<String> borrowBook(@PathVariable Long bookId, @PathVariable Long patronId) {
     borrowingRecordService.borrowBook(bookId, patronId);
+    return new ResponseEntity<>("Book with id " + bookId + " was borrowed successfully by patron with id " +patronId , HttpStatus.OK);
 }
 
-//    @PutMapping("/return/{bookId}/patron/{patronId}")
-//    public BorrowingRecord returnBook(@PathVariable Long bookId, @PathVariable Long patronId) {
-//        return borrowingRecordService.returnBook(bookId, patronId);
-//    }
+
 @PutMapping("/return/{bookId}/patron/{patronId}")
-public void returnBook(@PathVariable Long bookId, @PathVariable Long patronId) {
+public ResponseEntity<String> returnBook(@PathVariable Long bookId, @PathVariable Long patronId) {
     borrowingRecordService.returnBook(bookId, patronId);
+    return new ResponseEntity<>("The patron with " +patronId+" return The Book with id " + bookId , HttpStatus.OK);
 }
 }

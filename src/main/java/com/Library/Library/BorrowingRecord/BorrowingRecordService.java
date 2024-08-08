@@ -4,6 +4,8 @@ import com.Library.Library.Book.BookRepository;
 import com.Library.Library.Patron.Patron;
 import com.Library.Library.Patron.PatronRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.Library.Library.Book.Book;
 
@@ -31,9 +33,15 @@ public class BorrowingRecordService {
     public void borrowBook(Long bookId, Long patronId) {
         Book book = bookRepository.findById(bookId).orElseThrow(() -> new IllegalArgumentException("Invalid book ID"));
         Patron patron = patronRepository.findById(patronId).orElseThrow(() -> new IllegalArgumentException("Invalid patron ID"));
+        boolean isAvailable = borrowingRecordRepository.findByBookAndReturnDateIsNull(book).isEmpty();
+        // Check the book's status
+        if (!isAvailable) {
+            throw new IllegalStateException("The book is not available for borrowing right now.");
+        }
         BorrowingRecord borrowingRecord = new BorrowingRecord(null,LocalDate.now(), patron,book);
         borrowingRecordRepository.save(borrowingRecord);
         updateBookStatus(book,patronId);
+
     }
 
     public void returnBook(Long bookId, Long patronId) {
