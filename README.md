@@ -200,6 +200,29 @@
     "message": "Patron with id 1 was successfully deleted."
   }
   ```
+  
+  ## Borrowing Record API
+
+   ### 1. Borrow Book
+  - **Endpoint:** `POST /api/borrow/{bookId}/patron/{patronId}`
+  - **Description:** Borrow a book by a patron.
+  - **Response Example:**
+    Update the book status from `Available` to `Not Available`
+  ```json
+  {Book with id 1 was borrowed successfully by patron with id 2}
+  ```
+
+   ### 2. Return Book
+  - **Endpoint:** `POST /api/return/{bookId}/patron/{patronId}`
+  - **Description:** Return a borrowed book.
+  - **Response Example:**
+    Update the book status from `Not Available` to  `Available` and Add a `returnDate` value
+  ```json
+  {
+   The patron with 1 return The Book with id 1
+  }
+  ```
+  
 
   
   
