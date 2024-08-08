@@ -10,7 +10,7 @@
   [
       {
           "id": 1,
-          "ISBN": "978-3-16-148410-0",
+          "isbn": "978-3-16-148410-0",
           "title": "Book One",
           "author": "Author One",
           "publicationYear": 2020,
@@ -20,7 +20,7 @@
       },
       {
           "id": 2,
-          "ISBN": "978-3-16-1456877-0",
+          "isbn": "978-3-16-1456877-0",
           "title": "Book Two",
           "author": "Author Two",
           "publicationYear": 1987,
@@ -38,7 +38,7 @@
   ```json
   {
     "id": 1,
-    "ISBN": "978-3-16-148410-0",
+    "isbn": "978-3-16-148410-0",
     "title": "Book One",
     "author": "Author One",
     "publicationYear": 2020,
@@ -53,7 +53,7 @@
   - **Request Body Example:**
   ```json
   {
-    "ISBN": "978-3-16-148410-0",
+    "isbn": "978-3-16-148410-0",
     "title": "Book One",
     "author": "Author One",
     "publicationYear": 2020,
@@ -65,7 +65,7 @@
   ```json
   {
     "id": 1,
-    "ISBN": "978-3-16-148410-0",
+    "isbn": "978-3-16-148410-0",
     "title": "Book One",
     "author": "Author One",
     "publicationYear": 2020,
@@ -89,7 +89,7 @@
   ```json
   {
     "id": 1,
-    "ISBN": "978-3-16-148410-0",
+    "isbn": "978-3-16-148410-0",
     "title": "Updated Book One",
     "author": "Updated Author One",
     "publicationYear": 2020,
